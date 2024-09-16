@@ -1,9 +1,11 @@
 package models
 
+// DomainUrl struct (models)
 type DomainUrl struct {
-	DomainUrl string `string:"domain-url"`
+	DomainUrl string `json:"domain-url"`
 }
 
+// Response struct (models)
 type Response struct {
 	Domain      string `json:"domain"`
 	HasMX       bool   `json:"has-mx"`

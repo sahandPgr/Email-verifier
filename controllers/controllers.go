@@ -5,9 +5,12 @@ import (
 	"log"
 	"net"
 	"strings"
+
+	"github.com/sahandPgr/Email-verifier/models"
 )
 
-func CheckDomain(domain string) {
+// Checking domain is valid or not
+func CheckDomain(domain string) models.Response {
 	var hasMx, hasSPF, hasDMARC bool
 	var spfRecord, dmarcRecord string
 	fmt.Println("Checking domain for: " + domain)
@@ -42,7 +45,17 @@ func CheckDomain(domain string) {
 		}
 	}
 
+	domainResponse := models.Response{
+		Domain:      domain,
+		HasMX:       hasMx,
+		HasSPF:      hasSPF,
+		SPFRecord:   spfRecord,
+		HasDMARC:    hasDMARC,
+		DMARCRecord: dmarcRecord,
+	}
+
 	fmt.Printf("Domain= %v\n , hasMX= %v\n, hasSPF= %v\n, SPFRecord= %v\n, hasDMARC= %v\n, DMARCRecord= %v\n",
 		domain, hasMx, hasSPF, spfRecord, hasDMARC, dmarcRecord)
 
+	return domainResponse
 }
