@@ -8,6 +8,6 @@ import (
 // Initializing routes
 func InitializeRoutes() *mux.Router {
 	r := mux.NewRouter()
-	r.HandleFunc("/form", middleware.FormHandler).Methods("POST")
+	r.HandleFunc("/check-domain", middleware.FormHandler).Methods("POST")
 	return r
 }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/sahandPgr/Email-verifier/routes"
+	routes "github.com/sahandPgr/Email-verifier/routes"
 )
 
 func main() {

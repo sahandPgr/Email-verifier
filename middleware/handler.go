@@ -8,13 +8,11 @@ import (
 	"github.com/sahandPgr/Email-verifier/models"
 )
 
-var domainResponses []models.Response
-
+// /check-domain handler
 func FormHandler(w http.ResponseWriter, r *http.Request) {
 	var domainUrl models.DomainUrl
 	json.NewDecoder(r.Body).Decode(&domainUrl)
 	w.Header().Set("Content-Type", "application/json")
 	domainVar := controllers.CheckDomain(domainUrl.DomainUrl)
-	domainResponses = append(domainResponses, domainVar)
-	json.NewEncoder(w).Encode(domainResponses)
+	json.NewEncoder(w).Encode(domainVar)
 }

@@ -4,13 +4,16 @@ import (
 	"fmt"
 	"log"
 	"net"
+	"regexp"
 	"strings"
 
 	"github.com/sahandPgr/Email-verifier/models"
 )
 
 // Checking domain is valid or not
-func CheckDomain(domain string) models.Response {
+func CheckDomain(mail string) models.Response {
+	res, _ := regexp.Compile(`([a-zA-Z0-9.-]+)$`)
+	domain := res.FindString(mail)
 	var hasMx, hasSPF, hasDMARC bool
 	var spfRecord, dmarcRecord string
 	fmt.Println("Checking domain for: " + domain)
